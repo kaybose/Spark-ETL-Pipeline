@@ -2,12 +2,12 @@ from pyspark.sql.types import StructType, StructField, IntegerType, StringType, 
 from pyspark.sql.functions import monotonically_increasing_id, col, lit
 from pyspark.sql.types import *
 
-class Extract:
+class Injest:
     def __init__(self,spark):
         self.spark = spark
 
 
-    def extract_data(self,spark):
+    def injest_data(self,spark):
         print("Injesting")
         cust_schema = StructType([ \
             StructField("pid", StringType(), True), \

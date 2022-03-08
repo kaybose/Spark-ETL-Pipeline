@@ -11,9 +11,11 @@ class Transform:
     def transform_data(self, df):
         print("Transforming")
 
+        #removing first three rows which are not relevant
         df1 = df.withColumn("Index", monotonically_increasing_id())
         df2 = df1.filter('index > 2').drop("Index")
 
+        #filtering out the not null countryname
         df3 = df2.filter("countryname IS NOT NULL")
 
         df3. \
@@ -77,9 +79,9 @@ class Transform:
         project_country_abbrev_dict.update(country_not_found_mapping)
 
         # ddf = spark.createDataFrame(data_dict, schema)
-        scm = StructType([  \
-            StructField("key", StringType(), True), \
-            StructField("value", StringType(), True) \
+        scm = StructType([\
+            StructField("key", StringType(), True),\
+            StructField("value", StringType(), True)\
             ])
 
         ddf = self.spark.createDataFrame(project_country_abbrev_dict.items(), scm)

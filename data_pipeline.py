@@ -1,7 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
 
-import extract
+import ingest
 import transform
 import load
 
@@ -12,11 +12,11 @@ class Pipeline:
     def run_pipeline(self):
 
         print("Running Pipeline")
-        extract_process = extract.Extract(self.spark)
-        extract_process.extract_data()
+        injest_process = injest.Injest(self.spark)
+        df = injest_process.injest_data()
 
         transform_process = transform.Transform(self.spark)
-        transform_process.transform_data(df)
+        DF_transformed = transform_process.transform_data(df)
 
         load_process = load.Load(self.spark)
         load_process.load_data()
@@ -24,8 +24,8 @@ class Pipeline:
     def create_spark_session(self):
         self.spark = SparkSession. \
                 builder. \
-                appName('World Bank ETL'). \
-                master('local[*]'). \
+                appName('World Bank ETL').\
+                master('local[*]').\
                 getOrCreate()
 
 if __name__ == '__main__':
