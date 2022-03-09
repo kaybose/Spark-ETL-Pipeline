@@ -28,6 +28,8 @@ class Pipeline:
                 master('local[*]').\
                 getOrCreate()
 
+
+
 if __name__ == '__main__':
     pipeline = Pipeline()
     pipeline.create_spark_session()
