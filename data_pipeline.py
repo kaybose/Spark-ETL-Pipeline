@@ -15,7 +15,7 @@ def run_pipeline(spark, src_dir_proj, src_dir_code, file_format):
 
         df_transformed = transform_data(spark, df_projects, df_code)
 
-        #load_data(spark, df_transformed, tgt_dir, tgt_file_format)
+        load_data(spark, df_transformed, tgt_dir, tgt_file_format)
 
 
 
