@@ -2,9 +2,11 @@
 def load_data(spark, df_transformed, tgt_dir, file_format):
     #print("Loading...")
 
-    spark.write. \
+    df_transformed.write. \
         format(file_format). \
-        save(tgt_dir)
+        save(tgt_dir).\
+        saveAsTable('finalData')
 
-    #sampleDF.createOrReplaceTempView("sampleStudentTable")
+    #df_transformed.createOrReplaceTempView("finalData")
+    #pyspark.sql("")
 
