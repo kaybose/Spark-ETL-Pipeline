@@ -81,9 +81,9 @@ def transform_data(spark, df_projects, df_code):
 
     # joining the dataframes on the countryname and country column to add the countrycode
     df_proj_final = df_ready.join(df_dict, df_ready.countryname == df_dict.countryname, "leftouter").drop("countryname")
-    df_proj_final.show()
+    #df_proj_final.show()
     df_code_dropped = df_code.select("Country Code", "IncomeGroup").drop("SpecialNotes", "_c5")
     df_final = df_proj_final.join(df_code_dropped, df_proj_final["countrycode"] == df_code_dropped["Country Code"], "leftouter")
-    df_final.show()
+    #df_final.show()
 
     return df_final
