@@ -8,7 +8,7 @@ from load import load_data
 
 def run_pipeline(spark, src_dir_proj, src_dir_code, file_format):
 
-        print("Running Pipeline")
+        #print("Running Pipeline")
 
         df_projects = injest_data(spark, src_dir_proj, file_format, mark='proj')
         df_code = injest_data(spark, src_dir_code, file_format, mark = 'code')
@@ -29,8 +29,8 @@ if __name__ == '__main__':
 
     tgt_dir = os.environ.get('TGT_DIR')
     tgt_file_format = os.environ.get('TGT_FILE_FORMAT')
-    print('in main')
+    #print('in main')
     spark = get_spark_session(env,'World Bank ETL')
-    print('after sc,going to running pipe')
+    #print('after sc,going to running pipe')
     run_pipeline(spark, src_dir_proj, src_dir_code, src_file_format)
     #demo comment
